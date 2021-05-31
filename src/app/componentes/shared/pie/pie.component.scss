@@ -5,7 +5,7 @@
     display: grid;
     grid-template-columns: $margenFooter auto $margenFooter;
     padding: 10px 0;
-    color: white;
+    color: $colorSecundario;
     @include Asmall(){
         color: black;
     }
@@ -13,7 +13,7 @@
         grid-template-columns: $margenContenido auto $margenContenido;
     }
     p{
-        font-size: 8px;
+        font-size: 12px;
         align-self: center;
         text-align: center;
     }

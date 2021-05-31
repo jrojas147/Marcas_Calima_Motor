@@ -1,47 +1,39 @@
 @import '../../../scss/variables';
 @import '../../../scss/mixins';
 
-/* Radio Buttons */
-  
   /* style your lables/button */
-  input[type="radio"] + div {
+  input[type="radio"] + div {//Controla los botones de los meses a seleccionar
     /* keep pointer so that you get the little hand showing when you are on a button */
     cursor: pointer;
     font-size: 12px;
     margin: 5px;
     border-radius: 3px;
     padding: 15px;
-    background-color: white;
-    color: $colorTerciario;
-    border: 1px solid $colorTerciario !important;
+    background-color: white;//Color inicial de fondo en los meses a financiar
+    color: $colorSecundario;//El color de la fuente en los botones
+    border: 1px solid $colorTerciario !important;//Borde de los botones
     grid-column: 1;
     grid-row: 1;
     text-align: center;
     border: none;
-  
-    
   }
-  
   .radio {
-    input[type="radio"]:checked + div {
+    input[type="radio"]:checked + div { //controla la seleccion de botones el efecto
       /* style for the checked/selected state */
       border-radius: 5px;
-      box-shadow: 0px 1px 7px 0px $colorTerciario;
-      background-color: $colorPrimario;
-      color: white;
-      border: none;
+      box-shadow: 0px 1px 7px 0px $colorSecundario;
+      background-color: white;//Controla el color de fondo al seleccionar
+      color: $colorSecundario;//Color de la fuente en las cajas de meses
+      border: none;//borde del boton
       font-weight: 800;
-  
-      
     }
   }
-
   .radiogrupo{
-      display: grid;
+      display: grid;//muestra los cuadros de los meses a financiar
       grid-template-columns: auto auto;
       grid-template-rows: auto auto;
       @include tabletLaptop(){
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, 1fr);//Cpntrola el total de columnas en los botones de meses
         grid-template-rows: auto;
         grid-column-gap: 5px;
         .radio{
@@ -49,19 +41,18 @@
             justify-self: center;
             width: 100%;
         }
-        .mes{
+        .mes{//Controla el texto del boton
             align-self: center;
             justify-self: center;
             width: 100%;
         }
     }
   }
-  
 .radio {
         display: grid;
         grid-template-columns: auto;
-        
-    input {
+
+    input {//Controla el area par seleccionar las cuotas
       opacity: 0;
       grid-column: 1;
       grid-row: 1;
@@ -69,14 +60,11 @@
       justify-self: center;
       z-index: 1;
       width: 100%;
-      height: 100%;
-      cursor: pointer;
-    } 
-    
+      height: 100%;//Muestra el total del area para que sea vinvulo
+      cursor: pointer;//El icono sel cursor a seleccionar
+    }
   }
-
   .contCampoDos{
-    
     @include tabletLaptop(){
         display: grid;
         grid-template-columns: repeat(2, auto);
@@ -85,7 +73,3 @@
     }
 }
 
-mat-label b{
-  font-size: 13px;
-  color: black;
-}

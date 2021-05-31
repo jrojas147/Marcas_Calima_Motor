@@ -39,7 +39,7 @@ export class PasotresComponent {
 
    viabilizar() {
     this.consultaCentrales.observableAutenticar.subscribe((value: number) => {
-      
+
       if (value === 1) {
       if (this.consultaCentrales.contactoCentrales.DatosFinancieros.ActividadEconomica) {
         if (this.consultaCentrales.contactoCentrales.DatosFinancieros.ActividadEconomica === 1) {
@@ -60,70 +60,52 @@ export class PasotresComponent {
         let respuesta = res.Resultado;
         this.cleanRespuesta(respuesta);
       });
-
     }
-
   });
-
 }
 
-cleanRespuesta(respuesta) {
-  let r = respuesta.toLowerCase();
-  r = r.replace(new RegExp("\\s", 'g'),"");
-  r = r.replace(new RegExp("[àáâãäå]", 'g'),"a");
-  r = r.replace(new RegExp("æ", 'g'),"ae");
-  r = r.replace(new RegExp("ç", 'g'),"c");
-  r = r.replace(new RegExp("[èéêë]", 'g'),"e");
-  r = r.replace(new RegExp("[ìíîï]", 'g'),"i");
-  r = r.replace(new RegExp("ñ", 'g'),"n");                            
-  r = r.replace(new RegExp("[òóôõö]", 'g'),"o");
-  r = r.replace(new RegExp("œ", 'g'),"oe");
-  r = r.replace(new RegExp("[ùúûü]", 'g'),"u");
-  r = r.replace(new RegExp("[ýÿ]", 'g'),"y");
-  r = r.replace(new RegExp("\\W", 'g'),"");
+  cleanRespuesta(respuesta) {
+    let r = respuesta.toLowerCase();
+    r = r.replace(new RegExp("\\s", 'g'),"");
+    r = r.replace(new RegExp("[àáâãäå]", 'g'),"a");
+    r = r.replace(new RegExp("æ", 'g'),"ae");
+    r = r.replace(new RegExp("ç", 'g'),"c");
+    r = r.replace(new RegExp("[èéêë]", 'g'),"e");
+    r = r.replace(new RegExp("[ìíîï]", 'g'),"i");
+    r = r.replace(new RegExp("ñ", 'g'),"n");
+    r = r.replace(new RegExp("[òóôõö]", 'g'),"o");
+    r = r.replace(new RegExp("œ", 'g'),"oe");
+    r = r.replace(new RegExp("[ùúûü]", 'g'),"u");
+    r = r.replace(new RegExp("[ýÿ]", 'g'),"y");
+    r = r.replace(new RegExp("\\W", 'g'),"");
 
-  if(r.length > 12 && this.resultado == 2){
-    if(r == 'preaprobadonosevalidoingresopormareiguanosevalidoingresoporincomeestimatorpreaprobadoporvalidacionreglasmotorcapacidaddepagoyobanconoaplicaparafasttrack'){
-        this.variantePreaprobado = 21;
-        this.sendMail = true;
+    if(r.length > 12 && this.resultado == 2){
+      if(r == 'preaprobadonosevalidoingresopormareiguanosevalidoingresoporincomeestimatorpreaprobadoporvalidacionreglasmotorcapacidaddepagoyobanconoaplicaparafasttrack'){
+          this.variantePreaprobado = 21;
+      }
+      if(r == 'preaprobadonosevalidoingresopormareiguanosevalidoingresoporincomeestimatorreglasmotorycapacidaddepagovalidoperopreaprobadoportipodeingreso'){
+          this.variantePreaprobado = 22;
+      }
+      if(r == 'preaprobadopreaprobadoporvalidacionreglasmotorcapacidaddepagoyobanconoaplicaparafasttrack'){
+          this.variantePreaprobado = 23;
+      }
+      if(r == 'preaprobadosevalidoenmareiguaperonocumpleconcontinuidadlaboralpreaprobadoporvalidacionreglasmotorcapacidaddepagoyobanconoaplicaparafasttrack'){
+          this.variantePreaprobado =  24;
+      }
+      if(r == 'preaprobadosevalidoenmareiguaperonocumpleconcontinuidadlaboralreglasmotorycapacidaddepagovalidoperopreaprobadoportipodeingreso'){
+          this.variantePreaprobado = 25;
+      }
+      if(r == 'preaprobadonosevalidocorreoelectroniconicelularporubica'){
+          this.variantePreaprobado = 26;
+      }
+    }else{
+          this.variantePreaprobado = 2;
     }
-    if(r == 'preaprobadonosevalidoingresopormareiguanosevalidoingresoporincomeestimatorreglasmotorycapacidaddepagovalidoperopreaprobadoportipodeingreso'){
-        this.variantePreaprobado = 22;
+    if(this.resultado == 3){
     }
-    if(r == 'preaprobadopreaprobadoporvalidacionreglasmotorcapacidaddepagoyobanconoaplicaparafasttrack'){
-        this.variantePreaprobado = 23;
-        if(this.scanParams.enriquecido){
-          this.sendWhatsapp = true;
-        }
+    if(this.resultado == 4 ){
     }
-    if(r == 'preaprobadosevalidoenmareiguaperonocumpleconcontinuidadlaboralpreaprobadoporvalidacionreglasmotorcapacidaddepagoyobanconoaplicaparafasttrack'){
-        this.variantePreaprobado = 24;
-        if(this.scanParams.enriquecido){
-          this.sendMail = true;
-        }
-    }
-    if(r == 'preaprobadosevalidoenmareiguaperonocumpleconcontinuidadlaboralreglasmotorycapacidaddepagovalidoperopreaprobadoportipodeingreso'){
-        this.variantePreaprobado = 25;
-        if(this.scanParams.enriquecido){
-          this.sendMail = true;
-        } 
-    }
-    if(r == 'preaprobadonosevalidocorreoelectroniconicelularporubica'){
-        this.variantePreaprobado = 26;
-        if(this.scanParams.enriquecido){
-        this.sendWhatsapp = true;
-        }
-    }
-}else{
-    this.variantePreaprobado = 2;
+  }
 }
-
-if(this.scanParams.enriquecido && (this.resultado == 4 || this.resultado == 3)){
-  this.sendWhatsapp = true;
-}
-}
-
-}
-
 
 

@@ -67,8 +67,8 @@ export class PasounoComponent {
   get montoNoValido() {
     return this.primero.get('monto').invalid && this.primero.get('monto').touched;
   }
-  /* get precioNoValido() {
+    get precioNoValido() {
     return this.primero.get('precio').invalid && this.primero.get('precio').touched;
-  } */
+  }
 
 }
