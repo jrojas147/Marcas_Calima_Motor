@@ -8,4 +8,5 @@ export interface OtrosDatos {
     InfoUno?: string;
     InfoDos?: string;
     InfoTres?: string;
+    CodigoSefi?: number;
 }

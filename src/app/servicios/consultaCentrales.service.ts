@@ -35,7 +35,8 @@ export class ConsultaCentralesService {
       ConcesionarioRadicacion: 99,
       IdentificacionVendedor: null,
       InfoDos: '',
-      InfoTres: ''
+      InfoTres: 'gonzalezmi@santanderconsumer.co',
+      CodigoSefi: 84
     },
     DatosVehiculo:{
       Marca: null,
@@ -91,7 +92,6 @@ export class ConsultaCentralesService {
     if (!this.scanParams.roisense && !this.scanParams.idc) {
       this.contactoCentrales.OtrosDatos.ConcesionarioRadicacion = 99;
     }
-    this.contactoCentrales.OtrosDatos.InfoTres = 'gonzalezmi@santanderconsumer.co';
 
     const bodyT = {
       UserPass: this.const.userpass
