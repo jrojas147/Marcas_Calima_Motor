@@ -28,6 +28,7 @@ export class ScanparamsService {
         this.enriquecido = true;
       }
       if (data.utm_source) {
+        debugger;
         this.utm = data.utm_source;
       }
       if (data.idc) {
