@@ -1,5 +1,4 @@
 const nombreCliente = "Calima Motor";
-
 export const Constantes = {
     nombreCliente: "Calima Motor",
     webAliado: "https://calimamotor.com/",

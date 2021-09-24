@@ -1,69 +1,49 @@
 <div class="contenedor">
   <div class="encabezadoPaso">
-      <p class="izquierda">Calcula tu cuota</p>
-      <p class="derecha">* Información requerida</p>
+    <p class="izquierda">Calcula tu cuota</p>
+    <p class="derecha">* Información requerida</p>
   </div>
   <hr>
 
   <form [formGroup]="primero">
+    <mat-label>¿Cuánto dinero necesitas financiar?</mat-label>
+    <mat-form-field appearance="outline" class="full-width">
+      <input currencyMask type="tel" matInput
+        [options]="{ align: 'left', prefix: '$ ', suffix: '', thousands: '.', decimal: ',', precision: 0 }"
+        formControlName="monto">
+      <mat-error *ngIf="montoNoValido">Debes diligenciar mínimo $ {{const.minimo | number:'1.0':'es'}}</mat-error>
+    </mat-form-field>
 
-      <mat-label>¿Cuánto dinero necesitas financiar?</mat-label>
+    <mat-label>¿A cuántos meses quieres pagar?</mat-label>
+    <div class="radiogrupo">
+      <span class="radio" *ngFor="let periodo of const.periodos">
+        <input type="radio" name="periodo" [value]="periodo.name" formControlName="periodo">
+        <div class="mes">{{periodo.name}} meses</div>
+      </span>
+    </div>
+    <div *ngIf="primero.value.cuota !== 0" [@animationFadeOut]="primero.value.cuota">
+      <mat-label>Este será el valor aproximado de la cuota mensual</mat-label>
       <mat-form-field appearance="outline" class="full-width">
-          <input
-          currencyMask
-          type="tel"
-          matInput
+        <input currencyMask type="tel" matInput
           [options]="{ align: 'left', prefix: '$ ', suffix: '', thousands: '.', decimal: ',', precision: 0 }"
-          formControlName="monto"
-          >
-          <mat-error *ngIf="montoNoValido">Debes diligenciar mínimo $ {{const.minimo | number:'1.0':'es'}}</mat-error>
+          formControlName="cuota" readonly>
+        <mat-error *ngIf="montoNoValido">Debes diligenciar mínimo $ {{const.minimo | number:'1.0':'es'}}</mat-error>
       </mat-form-field>
+    </div>
+    <hr>
 
-      <mat-label>¿A cuántos meses quieres pagar?</mat-label>
-      <div class="radiogrupo">
-          <span class="radio" *ngFor="let periodo of const.periodos">
-              <input
-              type="radio"
-              name="periodo"
-              [value]="periodo.name"
-              formControlName="periodo"
-              >
-              <div class="mes">{{periodo.name}} meses</div>
-          </span>
-      </div>
-      <div *ngIf="primero.value.cuota !== 0" [@animationFadeOut]="primero.value.cuota">
-          <mat-label>Este será el valor aproximado de la cuota mensual</mat-label>
-          <mat-form-field appearance="outline" class="full-width">
-              <input
-              currencyMask
-              type="tel"
-              matInput
-              [options]="{ align: 'left', prefix: '$ ', suffix: '', thousands: '.', decimal: ',', precision: 0 }"
-              formControlName="cuota"
-              readonly
-              >
-              <mat-error *ngIf="montoNoValido">Debes diligenciar mínimo $ {{const.minimo | number:'1.0':'es'}}</mat-error>
-          </mat-form-field>
-      </div>
-
-      <hr>
-
-      <div class="contBotonPaso">
-        <div class="contenedor">
-          <div class="grid"></div>
-          <div class="contLogo">
-              <img [src]="const.santander" class="santander" alt="">
-          </div>
-          <div class="grid"></div>
+    <div class="contBotonPaso">
+      <div class="contenedor">
+        <div class="grid"></div>
+        <div class="contLogo">
+          <!-- <img [src]="const.santander" class="santander" alt=""> -->
         </div>
+        <div class="grid"></div>
+      </div>
       <div class="piepaso">
-          <button
-          mat-button
-          color="primary"
-          class="btnPrimario"
-          [disabled]="primero.invalid"
-          (click)="consultaCentrales.primeroCompleto = true"
-          matStepperNext>CONTINUAR <mat-icon>arrow_right_icon</mat-icon></button>
+        <button mat-button color="primary" class="btnPrimario" [disabled]="primero.invalid"
+          (click)="consultaCentrales.primeroCompleto = true" matStepperNext>CONTINUAR <mat-icon>arrow_right_icon
+          </mat-icon></button>
       </div>
     </div>
   </form>

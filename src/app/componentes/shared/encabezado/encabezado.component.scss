@@ -1,40 +1,39 @@
-@import './../../../../scss/variables';
-@import './../../../../scss/mixins';
+@import "./../../../../scss/variables";
+@import "./../../../../scss/mixins";
 
-.contenedor{
+.contenedor {
+  display: grid;
+  grid-template-columns: $margenContenido auto $margenContenido;
+  grid-template-columns: 5% auto 5%;
+  background-color: white;
+  border-bottom: 2px solid #bc162c;
+  @include Asmall() {
+    grid-template-columns: $margenContenidoSmall auto $margenContenidoSmall;
+  }
+  @include smallTablet() {
+    grid-template-columns: $margenContenidoSmall auto $margenContenidoSmall;
+  }
+  .contLogo {
+    text-align: center;
+    padding: 10px 0;
     display: grid;
-    grid-template-columns: $margenContenido auto $margenContenido;
-    grid-template-columns: 5% auto 5%;
-    background-color: white;
-    border-bottom: 2px solid #BC162C;
-    @include Asmall(){
-        grid-template-columns: $margenContenidoSmall auto $margenContenidoSmall;
+    grid-template-columns: 1fr 1fr;
+    @include tabletLaptop() {
+      text-align: left;
     }
-    @include smallTablet(){
-        grid-template-columns: $margenContenidoSmall auto $margenContenidoSmall;
+    .logoCliente {
+      width: 130px;
+      @include Asmall() {
+        width: 50px;
+      }
     }
-    .contLogo{
-        text-align: center;
-        padding: 10px 0;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-
-        @include tabletLaptop(){
-            text-align: left;
-        }
-        .logoCliente {
-          width: 130px;
-          @include Asmall() {
-            width: 50px;
-          }
-        }
-        .logoSantander {
-          width: 150px;
-          align-self: center;
-          justify-self: right;
-          @include Asmall() {
-            width: 110px;
-          }
-        }
+    .logoSantander {
+      width: 150px;
+      align-self: center;
+      justify-self: right;
+      @include Asmall() {
+        width: 110px;
+      }
     }
+  }
 }

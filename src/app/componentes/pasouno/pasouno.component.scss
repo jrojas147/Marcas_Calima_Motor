@@ -1,75 +1,73 @@
-@import '../../../scss/variables';
-@import '../../../scss/mixins';
+@import "../../../scss/variables";
+@import "../../../scss/mixins";
 
-  /* style your lables/button */
-  input[type="radio"] + div {//Controla los botones de los meses a seleccionar
-    /* keep pointer so that you get the little hand showing when you are on a button */
-    cursor: pointer;
-    font-size: 12px;
-    margin: 5px;
-    border-radius: 3px;
-    padding: 15px;
-    background-color: white;//Color inicial de fondo en los meses a financiar
-    color: $colorSecundario;//El color de la fuente en los botones
-    border: 1px solid $colorTerciario !important;//Borde de los botones
+
+.contCampoDos {
+  @include tabletLaptop() {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: 1fr;
+    grid-column-gap: 5px;
+  }
+}
+
+input[type="radio"] + div {
+  cursor: pointer;
+  font-size: 12px;
+  margin: 5px;
+  border-radius: 3px;
+  padding: 15px;
+  background-color: white;
+  color: $colorSecundario; //Fuente en los botones
+  border: 1px solid $colorTerciario !important; //Borde
+  grid-column: 1;
+  grid-row: 1;
+  text-align: center;
+  border: none;
+}
+.radio{
+  display: grid;
+  grid-template-columns: auto;
+  input[type="radio"]:checked + div {//Efecto
+    border-radius: 5px;
+    box-shadow: 0px 1px 7px 0px $colorSecundario;
+    background-color: white; //Color de fondo al seleccionar
+    color: $colorSecundario; //Color fuente
+    border: none;
+    font-weight: 800;
+  }
+  input {//Area de seleccion
+    opacity: 0;
     grid-column: 1;
     grid-row: 1;
-    text-align: center;
-    border: none;
+    align-self: center;
+    justify-self: center;
+    z-index: 1;
+    width: 100%;
+    height: 100%; //Total area seleccion
+    cursor: pointer; //El icono sel cursor a seleccionar
   }
-  .radio {
-    input[type="radio"]:checked + div { //controla la seleccion de botones el efecto
-      /* style for the checked/selected state */
-      border-radius: 5px;
-      box-shadow: 0px 1px 7px 0px $colorSecundario;
-      background-color: white;//Controla el color de fondo al seleccionar
-      color: $colorSecundario;//Color de la fuente en las cajas de meses
-      border: none;//borde del boton
-      font-weight: 800;
-    }
-  }
-  .radiogrupo{
-      display: grid;//muestra los cuadros de los meses a financiar
-      grid-template-columns: auto auto;
-      grid-template-rows: auto auto;
-      @include tabletLaptop(){
-        grid-template-columns: repeat(4, 1fr);//Cpntrola el total de columnas en los botones de meses
-        grid-template-rows: auto;
-        grid-column-gap: 5px;
-        .radio{
-            align-self: center;
-            justify-self: center;
-            width: 100%;
-        }
-        .mes{//Controla el texto del boton
-            align-self: center;
-            justify-self: center;
-            width: 100%;
-        }
-    }
-  }
-.radio {
-        display: grid;
-        grid-template-columns: auto;
+}
 
-    input {//Controla el area par seleccionar las cuotas
-      opacity: 0;
-      grid-column: 1;
-      grid-row: 1;
+.radiogrupo {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  @include tabletLaptop() {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    grid-column-gap: 5px;
+    .radio {
       align-self: center;
       justify-self: center;
-      z-index: 1;
       width: 100%;
-      height: 100%;//Muestra el total del area para que sea vinvulo
-      cursor: pointer;//El icono sel cursor a seleccionar
+    }
+    .mes {
+      align-self: center;
+      justify-self: center;
+      width: 100%;
     }
   }
-  .contCampoDos{
-    @include tabletLaptop(){
-        display: grid;
-        grid-template-columns: repeat(2, auto);
-        grid-template-rows: 1fr;
-        grid-column-gap: 5px;
-    }
 }
+
 

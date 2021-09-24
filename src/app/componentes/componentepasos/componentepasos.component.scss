@@ -1,7 +1,7 @@
 @import '../../../scss/variables';
 @import '../../../scss/mixins';
 
-.contenedor{//Contenerod d pasos
+.contenedor{
     display: grid;
     grid-template-columns: $margenContenido auto $margenContenido;
     @include Asmall(){
